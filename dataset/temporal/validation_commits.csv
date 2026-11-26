@@ -1,0 +1,1200 @@
+commit_hash,commit_date,author,message
+e0afff0e92a3c46e5de17e75b76ca1332d45497d,2019-05-06 19:56:06+00:00,EtiennePelletier,"Simplify flask.cli.main
+
+Werkzeug>=0.15's reloader now properly detects `python -m module`.
+Fixes #3022"
+af3c24c7dff239b2f1c9765bce9bef46525294bc,2019-05-07 21:28:50+00:00,EtiennePelletier,"Make jinja_options a dict rather than ImmutaleDict
+
+This allows changing jinja environment options from the flask app:
+>>> app.jinja_options['undefined'] = jinja2.ChainableUndefined"
+42da151fc75778cd86bf80a97d8de7f2f5eed846,2019-05-08 14:59:55+00:00,jaydarius,use or to complete the either statement
+6af14f058b6ef09214dc0e5d81902ed5b4ad12a0,2019-05-13 08:29:38+00:00,Eruvanos,support dataclass in JSONEncoder
+205c943deda542b0c0df2f1b9ce3bbe72d80eef8,2019-05-13 20:07:37+00:00,Sebastian Jakubiak,Fix misplaced paren in docs
+4e272fc042cab5505c3c5ae796caa6b06f9dae9d,2019-05-14 20:08:00+00:00,A Brooks,Fix various small spelling errors.
+5e41e409bca42a8fef7b4460adfc76bf432824da,2019-05-16 16:47:56+00:00,David Lord,"fix discord link, clean up"
+e61fd5f6cb1c7ebba86a9eef9c5e645d9c4032d1,2019-05-16 17:21:35+00:00,David Lord,add instructions for bug and feature branches
+af813d0d36ab498fe9a348637648e5489f0fc246,2019-05-16 18:09:26+00:00,Matt Cooper,add Azure Pipelines to readme
+bcf8cb1fd4605046a76b956bfbfaab246d9f8d18,2019-05-16 19:45:03+00:00,David Lord,"azure config, fix docs build"
+84f8e1634fed25de6ab065899234535d531e44ab,2019-05-16 20:53:49+00:00,David Lord,azure pipelines ci on 1.0.x branch
+a4f0f197962b27a002c45f5e27b13a8d4a27ee63,2019-05-17 15:39:16+00:00,David Lord,don't push app context for test client json
+99660cc40984015cbbcd27d1cdc19376b2536443,2019-05-17 17:57:51+00:00,David Lord,release version 1.0.3
+6f703a564c97b034eb0e98419595b7fa32d3562a,2019-05-17 20:20:31+00:00,David Lord,clean up open_resource and tests
+6dbcbdee3553683215d9e50b59834cb9af3aebd3,2019-05-17 20:26:54+00:00,David Lord,add sphinx-issues
+957f48a98dd7d598c55a521967a2fddcd12a4efd,2019-05-18 15:35:47+00:00,David Lord,"use dict literal syntax for jinja_options
+clarify docs about when jinja_options can be modified"
+fcf2eb4753d02caf258c5b1473fbb74721a3f489,2019-05-19 15:16:53+00:00,David Baumgold,FakeSignal should stub connect_via method
+33379155f613dbdb4fe6d0918a5038a989fc18bf,2019-05-23 14:51:38+00:00,jab,"Add pre-commit to dev dependencies, document it and pre-commit in CONTRIBUTING
+
+Now that we have a Black pre-commit hook (#3138),
+ensure pre-commit gets installed on ``pip install -e .[dev]``
+and document use of Black (rather than ""try to follow pep8"")
+in CONTRIBUTING."
+e18cc4d71d1c0ded4a2a7afb417c5ea03ebb0861,2019-05-24 14:19:56+00:00,David Lord,"add SeparatedPathType to accept multiple paths
+
+Multiple paths for the reloader's `--extra-files` are accepted as one
+option, separated by ':'."
+1ecc341fe55845b264bbd5949bc8cb7616ad98ba,2019-05-24 17:22:34+00:00,David Lord,add quickstart about JSON responses
+ed9ab2d3b6fc005b3807ddf484e85160233ffc82,2019-05-25 18:14:49+00:00,David Lord,strip static url trailing slash at assignment
+a5ff3cd01b8a78b5ed2961a8095290fed4e2a0d5,2019-05-31 10:57:28+00:00,Daniel Pope,Fix style issues on master using Black
+96b92ff9e81201ea2fab91b6b30586a5d40a3430,2019-05-31 12:14:15+00:00,Daniel Pope,Enable stylecheck tox run on Azure pipelines
+7ac2cbf63a59bf7ae31d1ac586816842dc285f91,2019-05-31 13:17:52+00:00,Joshua Bronson,Add pre-commit install-hooks to first-time setup
+6ac4b937793afa54e93ed303d0a05c32f397ae54,2019-05-31 13:57:21+00:00,Joshua Bronson,Close issues from commit messages in CONTRIBUTING
+976dfedaa9efdb566333ea829b12751820268f67,2019-05-31 14:49:23+00:00,Daniel Pope,Convert make_test_environ_builder into class (fixes #3207)
+cd14adbc1e834b0accc3b593a77d60d3cadddc8b,2019-05-31 14:52:53+00:00,Ryan Thielke,Issue #3226: Remove unused werkzeug datastructure import
+2a97d4a706c329b15b9119101254de15c80410cc,2019-05-31 14:55:08+00:00,Sang Min Park,#3225: document
+8bb71852849907d1b67ba7514cf1812348e11b44,2019-05-31 14:56:01+00:00,John Zeringue,"Better error message when view return type is not supported
+
+Before, returning a `bool` from a route caused the error
+
+```
+[2019-05-31 10:08:42,216] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File ""/Users/johnzeringue/Documents/ts-open/flask/flask/app.py"", line 2070, in make_response
+    rv = self.response_class.force_type(rv, request.environ)
+  File ""/Users/johnzeringue/Documents/ts-open/flask/env/lib/python3.7/site-packages/werkzeug/wrappers/base_response.py"", line 269, in force_type
+    response = BaseResponse(*_run_wsgi_app(response, environ))
+  File ""/Users/johnzeringue/Documents/ts-open/flask/env/lib/python3.7/site-packages/werkzeug/wrappers/base_response.py"", line 26, in _run_wsgi_app
+    return _run_wsgi_app(*args)
+  File ""/Users/johnzeringue/Documents/ts-open/flask/env/lib/python3.7/site-packages/werkzeug/test.py"", line 1119, in run_wsgi_app
+    app_rv = app(environ, start_response)
+TypeError: 'bool' object is not callable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/Users/johnzeringue/Documents/ts-open/flask/flask/app.py"", line 2393, in wsgi_app
+    response = self.full_dispatch_request()
+  File ""/Users/johnzeringue/Documents/ts-open/flask/flask/app.py"", line 1906, in full_dispatch_request
+    return self.finalize_request(rv)
+  File ""/Users/johnzeringue/Documents/ts-open/flask/flask/app.py"", line 1921, in finalize_request
+    response = self.make_response(rv)
+  File ""/Users/johnzeringue/Documents/ts-open/flask/flask/app.py"", line 2078, in make_response
+    reraise(TypeError, new_error, sys.exc_info()[2])
+  File ""/Users/johnzeringue/Documents/ts-open/flask/flask/_compat.py"", line 39, in reraise
+    raise value.with_traceback(tb)
+  File ""/Users/johnzeringue/Documents/ts-open/flask/flask/app.py"", line 2070, in make_response
+    rv = self.response_class.force_type(rv, request.environ)
+  File ""/Users/johnzeringue/Documents/ts-open/flask/env/lib/python3.7/site-packages/werkzeug/wrappers/base_response.py"", line 269, in force_type
+    response = BaseResponse(*_run_wsgi_app(response, environ))
+  File ""/Users/johnzeringue/Documents/ts-open/flask/env/lib/python3.7/site-packages/werkzeug/wrappers/base_response.py"", line 26, in _run_wsgi_app
+    return _run_wsgi_app(*args)
+  File ""/Users/johnzeringue/Documents/ts-open/flask/env/lib/python3.7/site-packages/werkzeug/test.py"", line 1119, in run_wsgi_app
+    app_rv = app(environ, start_response)
+TypeError: 'bool' object is not callable
+The view function did not return a valid response. The return type must be a string, tuple, Response instance, or WSGI callable, but it was a bool.
+```
+
+Now, it returns the more readable
+
+```
+[2019-05-31 10:36:19,500] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File ""/Users/johnzeringue/Documents/ts-open/flask/flask/app.py"", line 2400, in wsgi_app
+    response = self.full_dispatch_request()
+  File ""/Users/johnzeringue/Documents/ts-open/flask/flask/app.py"", line 1907, in full_dispatch_request
+    return self.finalize_request(rv)
+  File ""/Users/johnzeringue/Documents/ts-open/flask/flask/app.py"", line 1922, in finalize_request
+    response = self.make_response(rv)
+  File ""/Users/johnzeringue/Documents/ts-open/flask/flask/app.py"", line 2085, in make_response
+    "" {rv.__class__.__name__}."".format(rv=rv))
+TypeError: The view function did not return a valid response. The return type must be a string, dict, tuple, Response instance, or WSGI callable, but it was a bool.
+```
+
+Fixes #3214"
+55ad09c9024d2f0d23123c934e505042516cc796,2019-05-31 15:43:45+00:00,Scott Crosby,Move python properties to decorator syntax
+1718f1934c4fa709b42230b3ee5d6f803ec65df4,2019-05-31 15:45:38+00:00,cslecrone,don't require ssl module for flask cli
+f25b5000fd7b85418d8ff85b070821748ef14f19,2019-05-31 15:48:32+00:00,Daniel Pope,"Do not register empty CLI groups from Blueprint
+
+(Fixes #3224)"
+1b526c837e83d5e35d14eadde162c7608ab9e83f,2019-05-31 16:27:51+00:00,gokcegrbl,"Comment on bare except usage in _compat.py
+
+(Fixes pallets/flask#3227)"
+c7f56c5a5539143662a04ec8e54aa78777d20730,2019-05-31 16:37:18+00:00,Daniel Pope,Create json_dumps() method on new EnvironBuilder
+e45370b9940823daae4c3959158ded4a9e3f7f60,2019-05-31 17:04:51+00:00,Daniel Pope,Fix name of kwargs parameter
+d981cc678af3bbd30ea1cde54fd6e1b24398351f,2019-05-31 17:18:54+00:00,ultimecia7,Fix testing documentation to demonstrate using test client with teardown
+549fed29ea0b6f0f3cc3731a310f4de3631a759e,2019-05-31 17:38:39+00:00,Jon S. Stumpf,add pre-commit config for flake8
+b46f5942a528053034fecf210572ee04bc4a3284,2019-05-31 18:53:26+00:00,Jon S. Stumpf,address flake8 issues
+45b2e7702dd76b11156c9b9b5af707be2b5480ca,2019-05-31 18:54:03+00:00,Diego Alberto Torres Quintanilla,Guard against missing request context in logging docs.
+a3272941ce76a212e9d8d55722a0b230b963411d,2019-05-31 19:33:06+00:00,Paul Butler,Clarify documentation about how url_for uses configuration values (#2759)
+ca278a8694f42e569a6d9f7d71c669465019bf06,2019-06-01 15:00:25+00:00,David Lord,move to src directory
+43483683b2bc8da85f00ccccdfb8d9d5c77a6bb3,2019-06-01 15:35:03+00:00,David Lord,apply reorder-python-imports pre-commit config
+53c893b646252d610e877eb9385e9e250a1ae5e1,2019-06-01 16:22:20+00:00,David Lord,fix string concats left over by black
+b89bf9e6d7555743903ed3820156c3da7a571411,2019-06-02 17:40:47+00:00,vdanain,document Blueprint params
+dbd4520ccbe0954d8ff4f926ba5f16c4f5291533,2019-06-07 20:23:13+00:00,David Lord,"fix tests failing with server name warnings
+
+After pallets/werkzeug#1577, mismatched configured and real server
+names will show a warning in addition to raising 404. This caused
+tests that did this deliberately to fail.
+
+This patch removes the pytest fixture we were using to fail on
+warnings, instead using the standard `-Werror` option. This speeds
+up the tests by ~3x."
+d8d74b0cc89f7b9242cb5419ac1193463749f218,2019-06-07 20:52:42+00:00,aligoren,document _get_exc_class_and_code params
+7bc965fadac23bf9833eb34a4bb124af4e6b5cad,2019-06-12 13:56:01+00:00,Logan Wright,adds api error handling documentation
+8a7d080085ae28847f46b29162b5dacfd54b8a12,2019-06-12 17:35:35+00:00,David Lord,remove codecov
+4b519f0e332c8f71ea40d2272e7769321462cf47,2019-06-12 18:02:53+00:00,David Lord,reword api error section
+571b9f54e745849087f43b63a9788ded9edd0eb7,2019-06-12 21:01:49+00:00,David Lord,reword Blueprint class docstring
+6ec98f07499a6e6b61a43f265c818100aa41e205,2019-06-12 21:08:27+00:00,David Lord,reword _get_exc_class_and_code docstring
+c65863912ba3c93d014378e21402c97babca272b,2019-06-13 19:40:01+00:00,David Lord,move url matching after opening session
+9054f6d6397607647839286ce1db6cb2ef8457fe,2019-06-19 20:58:55+00:00,David Lord,always pass InternalServerError instance to 500 handler
+54519ef028660da63c3b2bab51c1f18e7b7c9fa2,2019-06-19 21:53:06+00:00,David Lord,document behavior of very generic error handlers
+146df0f9e8ea8a55bb66b7cc52d186e288580b92,2019-06-21 15:47:27+00:00,David Lord,use dashes for command names
+e666f7a69c737fef8236237671be4da5910e9113,2019-06-22 20:09:09+00:00,David Lord,standardize license and copyright
+24498afed5075583ecd5667b105b4a315a25051e,2019-06-22 20:10:50+00:00,David Lord,standardize project metadata
+7d779580004c0aa481648f1165e87e6ce4bac087,2019-06-23 19:21:31+00:00,David Lord,"use sphinx-issues, rewrap changelog"
+28b35c55a1fd7963227011b1a8a3dae2feb308a3,2019-06-23 19:27:25+00:00,David Lord,update docs config
+cb6272ccc8a836b402d518cf1f90328cf06cd7ea,2019-06-23 22:37:51+00:00,David Lord,fix docks linkcheck
+dbe51dc09ddc1e5cae82226e2cac1dae0ba9116d,2019-06-23 23:25:40+00:00,David Lord,remove union merge attr
+871e6d6a9d1c453716f68e4e88268961d067b26d,2019-06-26 21:32:20+00:00,David Lord,don't clear BadRequestKeyError args
+54cbb4e64297d68ff6c9ef3fe03c283448e3533f,2019-06-27 14:55:22+00:00,David Lord,"send_file quotes "":/"" in UTF-8 filename"
+3aff003c456ecfd329c29432d941714a0b474d53,2019-06-30 09:07:40+00:00,Abhinav Sagar,Update cli.py
+a5ecdfa7a57bf6bcba7391fc6d356e3f7de33e57,2019-07-01 14:23:03+00:00,Anthony Sottile,"Fixes for PEP451 import loaders and pytest 5.x
+
+- pytest 5.x drops python2 compatibility and therefore only implements PEP 451
+- pytest 5.x made the repr of `ExcInfo` less confusing (fixed tests depending
+  on the old format)"
+ac302fb6071a4a580234e3596dac082d6e8d8a1f,2019-07-01 14:36:20+00:00,Anthony Sottile,Make the changelog UTF-8 compatible
+b9c22672724ee3c89cc959bd80d3fcd81afb10e7,2019-07-01 16:49:40+00:00,David Lord,fix tests link
+df470aecb96efbcb17ca76e73196c25c38ce6d17,2019-07-01 21:56:18+00:00,David Lord,use app.name as app.logger name
+b08e35e4ab525c207144e42af1b678a78abe09cb,2019-07-02 18:32:28+00:00,David Lord,show warning for old logger config
+975f9792697c1a74bca3cfff201d1e0415bece6a,2019-07-03 13:04:23+00:00,ThiefMaster,Move dotenv warning to stderr
+626b5cc166e6151dfe0e86b514b2d9a1f55752a8,2019-07-04 22:33:46+00:00,David Lord,release version 1.0.4
+1b4ace9ba5e77679bf9d8e409283654f7589907e,2019-07-04 23:04:42+00:00,David Lord,release version 1.1.0
+73d997f0fc207aef8d9c7fa19d8878576dad3846,2019-07-07 15:25:52+00:00,Aadi Bajpai,Update ISSUE_TEMPLATE.md
+e4c7033a3447b8d1af67acf9e34269f2c5633fb9,2019-07-07 19:37:45+00:00,Aadi Bajpai,Comment out helpful tips in issue_template.md
+1617202d91e46a4c2584656969f90aa5d5db7fed,2019-07-08 17:26:12+00:00,David Lord,restore and deprecate json_available
+ffc68840f821fb0a4c41a7b2b4eaad6d71f539b7,2019-07-08 17:55:25+00:00,David Lord,release version 1.1.1
+98a26cfb425aef527ce5ace06f3a8e7cac186a6a,2019-07-10 16:49:40+00:00,Stéphane Wirtel,Documentation: Use Python 3.5+
+c478e5d52f4985a9a58f1ac1d229b47e9f6fe24f,2019-07-10 18:45:20+00:00,David Lord,pass sys.argv to flask cli
+ded3d642a762823702848c5e5c4e041a676a10a1,2019-07-10 18:45:20+00:00,David Lord,pass sys.argv to flask cli
+90004a83befdb1d65df8632e48078fd721932590,2019-07-18 04:45:31+00:00,Grey Li,"Update outdated extension doc
+
+Remove links and descriptions relate to abandoned ""Flask Extension
+Registry"" in documentation"
+3628cbceafef795f4889229ca3aed2bfb9fb26a8,2019-07-21 13:25:29+00:00,makdon,"Add version '3.7' and a comma in ""Running the test"" of contributing guide."
+a0a49e1c9ea9b0e850e9039c1b7000adbaf7370b,2019-07-24 07:50:37+00:00,linchiwei123,clean up outdated code
+28ffe153490c2a58919835bf0f9828958795871f,2019-07-30 12:45:06+00:00,Csirmaz Bendegúz,Fix typo in urlprocessors.rst
+2a8ebc4411deacb6eeac5d4cb6f9568d61ac6a12,2019-08-01 14:49:31+00:00,Grey Li,Fix github link generator for docs
+b3b38285a424487e5c400bf23e2554f112a099c1,2019-08-01 20:35:38+00:00,David Lord,fix stylecheck
+353d891561659a754ee92bb5e6576e82be58934a,2019-08-09 18:47:17+00:00,Chris Zimmerman,"fixed typo in logging docstring (#3328)
+
+* fixed typo in logging docstring
+
+* second typo fix"
+b33e89935a38b184b148ac5b72ae457a4a385d36,2019-08-13 08:02:56+00:00,Eido95,"docs: Change max content length value to megabyte
+
+16 * 1024 * 1024 = 16 MiB (Mebibyte)
+16 * 1000 * 1000 = 16 MB (Megabyte)
+
+The example is in megabytes, not in mebibytes."
+553b26f8579a21a2d3644cb3bc5cb2ed8cedabc5,2019-08-16 01:05:33+00:00,Arnav Borborah,Fix typo in pop documentation
+b839beb23d5fd3431132df68693f402891c5f69e,2019-08-25 18:33:41+00:00,Constantin,fix typo: base on -> based on
+9b94e1463894c3fb2c37092a19dc3c04588741f7,2019-08-28 22:44:00+00:00,hharutyunyan,Updating contribution docs. Added the link with a guide to install pre-commit and made the pre-commit installation command a code block.
+2ceae5f8a5783d292d89cb9cb8dbec429fc3e502,2019-08-30 20:34:56+00:00,bearnun,mention default logging level
+2ec150af02de076a2e64046fef634d873140ddce,2019-09-02 15:31:34+00:00,Nathan McKinley-Pace,"Update testing.rst
+
+It now describes how to install flaskr using pip so that all tests pass."
+e01b68e7ee66f7c5ec221bcb9e0cd3526153664d,2019-09-23 15:19:40+00:00,David Lord,"update patterns, snippets, extensions docs"
+6cde195c88ee720ca029b4fbfa64ea60d6983914,2019-09-23 18:59:59+00:00,David Lord,reword extension python version item
+0c0b31a789f8bfeadcbcf49d1fb38a00624b3065,2019-09-24 11:39:22+00:00,Doron Horwitz,get_cookie_name in SessionInterface for easier overriding in SecureCookieSessionInterface
+4ed20657c61c3e64aba4652e1f053bae65ebc821,2019-09-24 13:35:10+00:00,David Lord,update docs for new theme
+af970bd20f2d5c1d36abcb1f300a531c436b5655,2019-10-05 22:11:08+00:00,Kristin Faner,fix typo in request context docs
+941bc9ff6019117c9aa341f809bef7e0e54d0ebf,2019-10-06 20:26:00+00:00,Mellcap Zhao,Fix link to header in CONTRIBUTING (#3382)
+829aa65e642baf2f90bc29f940c8cbf180848dbc,2019-10-11 10:52:29+00:00,pgjones,"Support loading configuration from text files
+
+TOML is a very popular format now, and is taking hold in the Python
+ecosystem via pyproject.toml (among others). This allows toml config
+files via,
+
+    app.config.from_file(""config.toml"", toml.loads)
+
+it also allows for any other file format whereby there is a loader
+that takes a string and returns a mapping."
+413778afc19ce9f0cb484878d86375729c14faf4,2019-10-13 01:53:47+00:00,David Lord,"explain escape at top of quickstart
+
+* introduce escape, and explain why it's omitted in examples
+* clean up imports in examples"
+468705df1751b515fa088e6ccb374a59d1afbf76,2019-10-14 20:48:48+00:00,Marat Sharafutdinov,Update reqcontext.rst
+aac0f585b944cc65a1b570c1cc26d840f03e2f72,2019-10-18 16:15:00+00:00,David Lord,clean up config.from_file docs
+33d9f9fa08e5a007d7ff1bb1f92c8d593b3c380a,2019-10-18 23:05:55+00:00,Aliaksei Urbanski,declare support for Python 3.8
+07caa442241b36e14cf91b0fa0201ad764dfbd47,2019-10-26 06:19:00+00:00,erfanio,Change docs to use f-strings
+3ddf7fd2c2b4108a55213c791bd80981bd1f90f5,2019-10-28 09:13:37+00:00,Chris Lamb,"Make the documentation build reproducibly
+
+Whilst working on the Reproducible Builds effort [0] we noticed that
+flask could not be built reproducibly.
+
+This is because it includes an absolute build directory in the
+documentation as the ""json_module"" attribute points to a Python class/
+module which has a string representation including its path.
+
+This commit skips this (inherited) member from the documentation.
+
+(This was originally filed in Debian as #943674 [1].)
+
+ [0] https://reproducible-builds.org/
+ [1] https://bugs.debian.org/943674"
+c367a86cc5be70da4928b276d0218f98df6e854d,2019-10-29 00:37:25+00:00,Fernanda Guimarães,Test test_send_from_directory_bad_request no longer fails in Python 3.8.
+4f6b3105135026bbd8d0045703b5b5746554239e,2019-11-02 20:56:35+00:00,Thiago J. Barbalho,Fix typo
+1feb69d595575fabb569f8481c85c3568075d7ad,2019-11-13 22:13:56+00:00,Jochen Kupperschmidt,"Update `versionadded` for `Config.from_file`
+
+According to the change log at https://github.com/pallets/flask/blob/master/CHANGES.rst, the release `Config.from_file` will be published with is now 2.0.0 rather than 1.2.0."
+ef434ea9985b756f13bed283dfa55828829e5e1f,2019-11-15 04:27:44+00:00,Grey Li,"Replace old pocoo links everywhere
+
+pocco.org -> palletsprojects.com"
+a3415fc6dcf3f355a2b815686d6de12fa7383335,2019-11-15 04:34:13+00:00,Grey Li,Use https for pallets URL
+240a11052bb2ef1ba0bbcc5d503601a175926f75,2019-11-18 20:36:00+00:00,David Lord,lazy load app on reload only
+a671e47921f6b3f1e6c24f34f23b83ed13fe63b6,2019-11-18 21:46:00+00:00,David Lord,rewrite the development server docs
+824e548036096c835735b5655513fe291d9560bc,2019-11-19 02:57:43+00:00,David Lord,add 3.8 to pipelines
+26dac4fd77c9f73a552618597e24f324837c10a1,2019-11-19 03:06:57+00:00,David Lord,fix test pipeline display name
+980168d08498c00a14ab0f687ffac8cc50edb326,2019-11-19 07:34:45+00:00,David Lord,send_file doesn't allow StringIO
+e6ac789554ac1e5cf69a2442f252dba8233cde32,2019-11-22 16:12:43+00:00,Reece Dunham,mention discord in issue template
+38eb5d3b49d628785a470e2e773fc5ac82e3c8e4,2019-11-24 23:38:50+00:00,Adrian,"Remove comment about extension backwards compat
+
+0.7 was a long time ago; there's no reason for extension to supports such old versions."
+5da342e4dd7dfcc16aa25928ea91d69c2d362f73,2019-12-19 20:40:40+00:00,Marc Hernandez Cabot,fix docstring and remove redundant parentheses
+d4076cf07c70d7fccf82aba5c5acae3f3fb99447,2019-12-26 01:33:42+00:00,frostming,strip the ending slash for static_url_path
+7e068145df57784b61ca254d5c0b83edaf3e7435,2020-01-03 07:06:24+00:00,yingshaoxo,pass static_url_path along with static_folder
+aa1d4cb840352be3c57b912fded1de8b33024ec5,2020-01-04 14:58:04+00:00,Gregory Pakosz,remove approved extensions in foreword
+571e92b317a8ccd86ea3a5eb3231a78529f48baa,2020-01-22 15:10:58+00:00,Grey Li,"add import for escape in quickstart
+
+import escape from markupsafe instead of flask"
+ce08807a8b1f1229a1c390b6a86d5ee0f4029da0,2020-02-06 18:52:59+00:00,Isaac To,This is a typo.
+bb66b61d1d008599e39fd9d8c666ca0f0e9850e4,2020-02-06 20:04:49+00:00,Isaac To,A better expression for the intended meaning
+b80eaf2c9978c776c9efbb267ccbfdee875d0966,2020-02-06 20:14:10+00:00,Isaac To,"Incorrect grammar
+
+The original sentence has incorrect grammar"
+8d5234e4c729893c3ebd732839a8e7a01a51b7bc,2020-02-09 23:20:23+00:00,David Lord,next version 1.2.0
+bcde664f9a3f6ef3b3d33c6c4e7c3cb3acc2af30,2020-02-10 00:01:23+00:00,David Lord,cli checks for cryptography library
+63b40254e992c6c18d16ffade7aa8358d686a697,2020-02-10 18:16:08+00:00,David Lord,xfail __main__ instance test interacting with tox
+6627c5a3d250d760777b8e84d61ea6abb98e2937,2020-02-10 18:58:31+00:00,Latham Fell,Add vscode settings dir to .gitignore
+85db0135cb302e2e17936fb4cf62c9f90c94e342,2020-02-10 19:27:39+00:00,Armin Ronacher,Pin Werkzeug < 1.0 for 0.12 (#3497)
+8086ce8b9f17e53ce505206fde8e0de2739712ff,2020-02-10 19:30:54+00:00,Armin Ronacher,Changelog for 0.12.5
+191710cbda616a53533d5e794a787f24c453ac5a,2020-02-10 19:30:59+00:00,Armin Ronacher,Bump version number to 0.12.5
+79c71f24e4cb064852e2cbbfef78a0a051eb7ced,2020-02-10 19:32:11+00:00,Armin Ronacher,0.12.6.dev
+900fa2f795615683234cc7e7b050a1e131983689,2020-02-10 19:50:48+00:00,raymond-devries,Feature request #3445.
+d92b64aa275841b0c9aea3903aba72fbc4275d91,2020-02-11 00:36:40+00:00,David Lord,clean up merge
+e6178fe489b7828acc2bb8fd4b56a70b11ab6c6a,2020-02-12 05:17:03+00:00,Frost Ming,Handle different sep across os
+d5f88dafaf03a21aa4b6f0a273228fe9263a4a78,2020-02-23 13:53:18+00:00,kevinanew,refactor variable choices into if blocks
+37f582dbb131356810d26fb8129488276f765656,2020-02-27 22:22:03+00:00,kylepollina,Fix typo in docs (#3517)
+1d45539000c27951add3b518a73d73a7e3de7044,2020-02-28 20:09:51+00:00,ongopongo,"Fix property name in description
+
+Previously, the description referred to a property named `original_error`.
+However, both the code sample that followed it _and_ the Werkzeug
+documentation refer to it as `original_exception` instead.
+
+In this commit, I change the description to use the same property name
+as is used in the code sample and the Werkzeug documentation.
+
+Here's a link to the Werkzeug documentation of that property:
+- https://werkzeug.palletsprojects.com/en/1.0.x/exceptions/#werkzeug.exceptions.InternalServerError.original_exception"
+9311a823a7155b8f6377bbd22cf783a182011d54,2020-03-02 18:21:15+00:00,Jeff Widman,"Remove deprecated `license_file` option
+
+Starting with wheel 0.32.0 (2018-09-29), the `license_file` option is
+deprecated in favor of `license_files`.
+
+https://wheel.readthedocs.io/en/stable/news.html
+
+The wheel will continue to include `LICENSE`, it is now included
+automatically:
+
+https://wheel.readthedocs.io/en/stable/user_guide.html#including-license-files-in-the-generated-wheel-file
+
+See https://github.com/FactoryBoy/factory_boy/pull/696 for inspiration and more discussion."
+56e75eace520a78cbee07570706519b0680b7d29,2020-03-04 23:40:54+00:00,Peter G Kritikos,"Move HTML escaping example back to Variable Rules.
+
+Demonstration of markupsafe's escape function was in the Minimal
+Application example, but the minimal example does not accept user
+input."
+ceed993d639ff053b20c61db5afdb8ced574841b,2020-03-05 10:31:21+00:00,gutianci,docs: testing.rst function def missing colon
+d115d843e654c88ecb3833150ef9556bb0262cf3,2020-03-16 22:18:53+00:00,Tobias Sette,"docs: update ""Deploying on Google App Engine""
+
+Use the documentation for Python 3 instead of Python 2, which is deprecated."
+e047dd6a32dc57cd6e4fb5f064aceddeed979756,2020-03-18 07:07:51+00:00,Shanavas M,Update deprecated for config.from_json
+4548e00dba81a5e60024d76b35bcfe2a7be8e675,2020-03-20 09:41:00+00:00,Jeenu Viswambharan,clarify static_folder is relative to root_path
+8fc723c7c2b3bfe75bf76db75f2970d4253ce3bc,2020-03-24 14:54:32+00:00,mattc41190,itty bitty typo
+1736e01ea0b2d39ac1ee7e7b5993579487175530,2020-03-25 14:20:55+00:00,mattc41190,Grammar and clarity fix
+c6a619af833416160475c25aa3d11ef14ed74618,2020-04-02 19:09:04+00:00,David Lord,update CLI docs IDE integration
+57f9623b0835cbae06b25d7329cda480539049c3,2020-04-02 19:41:35+00:00,David Lord,move html escaping to dedicated section
+4024a4a89c18a1048b7496cf223c0b8c1e63c485,2020-04-03 17:02:40+00:00,David Lord,update deprecation versions
+93dd1709d05a1cf0e886df6223377bdab3b077fb,2020-04-03 17:08:11+00:00,David Lord,release version 1.1.2
+7673835b3da50575a14213814ea1ccefa860260f,2020-04-03 18:58:16+00:00,David Lord,remove Python 2 from docs
+a0a61acdecd925cf2a1ffe5fb7acd27c1695f1d8,2020-04-04 00:23:21+00:00,David Lord,drop support for Python 2.7 and 3.5
+1263d3bd142e4964da123f4e59088aa2968ec7e5,2020-04-04 00:34:32+00:00,David Lord,remove deprecated code
+662c245795c7cbb5dbd657a2d707c62c16770c18,2020-04-04 01:33:40+00:00,David Lord,remove _compat module
+57d628ca74513480908a63a6b66c1c8b1af896e8,2020-04-04 16:25:54+00:00,David Lord,remove more compat code
+524fd0bc8cec7bfe8167c9c98cb5511b01a0f4c6,2020-04-04 16:43:06+00:00,David Lord,apply pyupgrade
+2ae740dd4903bbe5f3864384bcdf2ab2d4638bce,2020-04-04 18:39:03+00:00,David Lord,f-strings everywhere
+f2f027d1fbc12f3ff24f3e471e11ac56e1a5d869,2020-04-04 19:28:08+00:00,David Lord,remove unused module docstrings
+171aabc87dd8bff0367d0555c8be6105b00c22ce,2020-04-04 19:57:14+00:00,David Lord,"remove unused ref directives
+
+replace page refs with doc directives"
+024f0d384cf5bb65c76ac59f8ddce464b2dc2ca1,2020-04-04 21:36:09+00:00,David Lord,move package metadata to setup.cfg
+84cbfc0698f429c93450cd6f1600e56b41a30247,2020-04-07 13:46:53+00:00,Grey Li,Stop change CWD to .env/.flaskenv location
+c43edfc7c08b8dbe883761bec14fa75ee7db1bf3,2020-04-07 14:00:15+00:00,David Lord,"remove simplejson
+
+- remove encoding detection backport, json.loads supports it directly
+- use str.translate instead of multiple str.replace"
+8b5f760b7285c863d5c7a4ee10adb5eb7ac60a05,2020-04-07 19:32:27+00:00,David Lord,"deprecate JSON encoding options
+
+make consistent with built-in json module"
+756902cca1bab981fbec0ea759d93239d9a711f0,2020-04-07 19:33:00+00:00,David Lord,update json docs
+7e3b8abf992be711e2961bd9155bf1ae96c81b74,2020-04-07 21:39:18+00:00,David Lord,"update docs requirements
+
+remove duplicate docs"
+fcac7f11cf5fbdaa43c3a8c305b31cf0a43a70d3,2020-04-07 22:54:36+00:00,David Lord,deprecate passing script_info to factory
+ff2f71379b719903e462ed6a83801b1736009000,2020-04-08 00:54:51+00:00,David Lord,"use ast to parse FLASK_APP
+
+enables keyword arguments to factory functions"
+e403e9ea970c875052c9199d35175e0a420bfed5,2020-04-14 03:31:00+00:00,Grey Li,Update changelog for load dotenv behaivour change
+846ee2c62e369ed06190b8791088748bd3a83557,2020-04-16 16:01:51+00:00,jackwardell,add assert message for errorhandler exception type
+b724832872ae4b4cd4b5f61c153eae39f1c3b213,2020-04-20 17:26:33+00:00,Joshua Bronson,Cherry-pick 7ba35c4 from master (support pathlib.Path for static_folder)
+7ba35c4d4fe99418cee9c87900bd0d3b38cf5bd0,2020-04-20 17:26:33+00:00,Joshua Bronson,"Restore support for using pathlib.Path for static_folder.
+
+* No longer causes AttributeError: 'PosixPath' object has no
+  attribute 'rstrip'.
+
+* This was broken by e6178fe489b7828acc2bb8fd4b56a70b11ab6c6a
+  which was released in 1.1.2.
+
+* Add a regression test that now passes.
+
+See #3557."
+59b0b85835fa925e67f9a3f5173f7d6b6e67a411,2020-05-02 11:34:31+00:00,jackwardell,"consolidate error handling docs
+
+Remove apierrors.rst and errorpages.rst from patterns and integrate the
+content into errorhandling.rst, along with other changes and extra
+content."
+c432d8b2bcecab32a6ccb2ac3bae8898ec2789f5,2020-05-08 19:42:52+00:00,Jeff Widman,Fix docs link for Flask-Uploads
+cdf0b5bc792d1a76f46c2b1efd62d4e9f3b6683b,2020-05-18 21:59:31+00:00,David Lord,add readthedocs config
+295e1e759f28417b564e5b6c1c65cc19d87c3a02,2020-05-23 20:25:06+00:00,David Lord,add EditorConfig
+8e2fb4633ea48b228479a5af6ef23c39c34d68d2,2020-05-23 20:48:24+00:00,David Lord,reformat contributing doc
+eea31f29a50eeb30ec3c314bb2a6de4c931095c1,2020-05-23 21:03:11+00:00,David Lord,use pip-compile to pin dev requirements
+2344cd6ebfc74c8a22149f2406aca137119bfded,2020-05-23 21:06:54+00:00,David Lord,use GitHub Actions for CI
+9eae42b9e11b7b0a179bb9144aa3d08e569261ce,2020-05-27 13:46:57+00:00,dependabot-preview[bot],"Bump sphinx from 3.0.3 to 3.0.4 (#3624)
+
+Bumps [sphinx](https://github.com/sphinx-doc/sphinx) from 3.0.3 to 3.0.4.
+- [Release notes](https://github.com/sphinx-doc/sphinx/releases)
+- [Changelog](https://github.com/sphinx-doc/sphinx/blob/3.x/CHANGES)
+- [Commits](https://github.com/sphinx-doc/sphinx/compare/v3.0.3...v3.0.4)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>
+
+Co-authored-by: dependabot-preview[bot] <27856297+dependabot-preview[bot]@users.noreply.github.com>"
+fd348ba8cb1aca26d85e90d007c1c8639256c583,2020-05-28 15:53:14+00:00,dependabot-preview[bot],"Bump pip-tools from 5.1.2 to 5.2.0 (#3627)
+
+Bumps [pip-tools](https://github.com/jazzband/pip-tools) from 5.1.2 to 5.2.0.
+- [Release notes](https://github.com/jazzband/pip-tools/releases)
+- [Changelog](https://github.com/jazzband/pip-tools/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/jazzband/pip-tools/compare/5.1.2...5.2.0)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>
+
+Co-authored-by: dependabot-preview[bot] <27856297+dependabot-preview[bot]@users.noreply.github.com>"
+0b6a05f541a9b1321f57f9fb0e6593a1abff316d,2020-05-31 20:51:00+00:00,Kai Chen,add section on copy/paste security
+8075be8261359986a7087039e3da90d0931eec72,2020-06-03 08:52:47+00:00,dependabot-preview[bot],"Bump pytest from 5.4.2 to 5.4.3
+
+Bumps [pytest](https://github.com/pytest-dev/pytest) from 5.4.2 to 5.4.3.
+- [Release notes](https://github.com/pytest-dev/pytest/releases)
+- [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+- [Commits](https://github.com/pytest-dev/pytest/compare/5.4.2...5.4.3)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+c2f2d9754b795c2383497dc073206b6c5233fbc7,2020-06-05 08:29:19+00:00,dependabot-preview[bot],"Bump greenlet from 0.4.15 to 0.4.16
+
+Bumps [greenlet](https://github.com/python-greenlet/greenlet) from 0.4.15 to 0.4.16.
+- [Release notes](https://github.com/python-greenlet/greenlet/releases)
+- [Changelog](https://github.com/python-greenlet/greenlet/blob/master/NEWS)
+- [Commits](https://github.com/python-greenlet/greenlet/compare/0.4.15...0.4.16)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+c59e019f5c5ed032c5360599bbd56e3fd9421adc,2020-06-06 04:48:37+00:00,Alan Swenson,update code-block typo (#3642)
+51686f5ab44fce6bc487545f621e199d726b6f50,2020-06-07 23:45:31+00:00,David Lord,expand section on copy/paste security
+347383b1bc947a94939a4e2a086c9966b3dfe8aa,2020-06-08 08:44:30+00:00,dependabot-preview[bot],"Bump tox from 3.15.1 to 3.15.2
+
+Bumps [tox](https://github.com/tox-dev/tox) from 3.15.1 to 3.15.2.
+- [Release notes](https://github.com/tox-dev/tox/releases)
+- [Changelog](https://github.com/tox-dev/tox/blob/master/docs/changelog.rst)
+- [Commits](https://github.com/tox-dev/tox/compare/3.15.1...3.15.2)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+3207777cd4f97eacd4fcd39fb7cd593687d62c0c,2020-06-08 14:16:11+00:00,dependabot-preview[bot],"Bump sphinx from 3.0.4 to 3.1.0
+
+Bumps [sphinx](https://github.com/sphinx-doc/sphinx) from 3.0.4 to 3.1.0.
+- [Release notes](https://github.com/sphinx-doc/sphinx/releases)
+- [Changelog](https://github.com/sphinx-doc/sphinx/blob/3.x/CHANGES)
+- [Commits](https://github.com/sphinx-doc/sphinx/compare/v3.0.4...v3.1.0)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+f6d5daac468bbdd77a2823133b619a3e3e404b6e,2020-06-09 08:21:52+00:00,dependabot-preview[bot],"Bump pre-commit from 2.4.0 to 2.5.0
+
+Bumps [pre-commit](https://github.com/pre-commit/pre-commit) from 2.4.0 to 2.5.0.
+- [Release notes](https://github.com/pre-commit/pre-commit/releases)
+- [Changelog](https://github.com/pre-commit/pre-commit/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/pre-commit/pre-commit/compare/v2.4.0...v2.5.0)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+a753fd601d7d7cb7385a2a68c090c7ad7ddf494f,2020-06-10 08:38:26+00:00,dependabot-preview[bot],"Bump pip-tools from 5.2.0 to 5.2.1
+
+Bumps [pip-tools](https://github.com/jazzband/pip-tools) from 5.2.0 to 5.2.1.
+- [Release notes](https://github.com/jazzband/pip-tools/releases)
+- [Changelog](https://github.com/jazzband/pip-tools/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/jazzband/pip-tools/compare/5.2.0...5.2.1)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+ee28a130093760650195b71bd3ec2694b77a91e7,2020-06-10 08:43:09+00:00,dependabot-preview[bot],"Bump pre-commit from 2.5.0 to 2.5.1
+
+Bumps [pre-commit](https://github.com/pre-commit/pre-commit) from 2.5.0 to 2.5.1.
+- [Release notes](https://github.com/pre-commit/pre-commit/releases)
+- [Changelog](https://github.com/pre-commit/pre-commit/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/pre-commit/pre-commit/compare/v2.5.0...v2.5.1)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+a54f6ee648732200b927c0b27a14adcdfdf756bc,2020-06-12 02:19:35+00:00,David Lord,update contributing guide
+710ac0db51b155678b4100888688d8c4378d5d64,2020-06-15 08:55:11+00:00,dependabot-preview[bot],"Bump sphinx from 3.1.0 to 3.1.1
+
+Bumps [sphinx](https://github.com/sphinx-doc/sphinx) from 3.1.0 to 3.1.1.
+- [Release notes](https://github.com/sphinx-doc/sphinx/releases)
+- [Changelog](https://github.com/sphinx-doc/sphinx/blob/3.x/CHANGES)
+- [Commits](https://github.com/sphinx-doc/sphinx/compare/v3.1.0...v3.1.1)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+92f648b04eda0c8563a43c60d989ce416137e920,2020-06-18 03:00:35+00:00,iomintz,"[docs] streaming contents: use app.response_class
+
+Examples should use app.response_class to encourage code that doesn't need to be changed should the response class be customized later on."
+aec07a1cb59ec25765cc2f5c4b6011bccb989abc,2020-06-21 08:29:45+00:00,Leonardo Giordani,Removed misleading DEBUG variable from examples
+efbd721f20cbe21ae5350380035752282882e9a2,2020-06-23 13:56:51+00:00,Leonardo Giordani,Changed example DATABASE_URI values
+26ec470afbfb8b643f1d0ba3501b4def42b58911,2020-06-23 14:06:37+00:00,Leonardo Giordani,Fixed trailing whitespace
+2254adf8455953019cadd54ba837c53d3dfaca5d,2020-06-23 14:14:03+00:00,Leonardo Giordani,Simplified version of file-based database
+d74a8626e042a85f82502301e9b8f4317120e586,2020-06-29 08:34:57+00:00,dependabot-preview[bot],"Bump tox from 3.15.2 to 3.16.0
+
+Bumps [tox](https://github.com/tox-dev/tox) from 3.15.2 to 3.16.0.
+- [Release notes](https://github.com/tox-dev/tox/releases)
+- [Changelog](https://github.com/tox-dev/tox/blob/master/docs/changelog.rst)
+- [Commits](https://github.com/tox-dev/tox/compare/3.15.2...3.16.0)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+569c88d72102e502d71c07193182adb1769ee936,2020-06-29 22:06:09+00:00,Ebonne Cabarrus,more changes to consolidated error handling docs
+cdc5a493331d181bae2b50996a50cb98f4a5ca4d,2020-06-30 08:06:52+00:00,dependabot-preview[bot],"Bump tox from 3.16.0 to 3.16.1
+
+Bumps [tox](https://github.com/tox-dev/tox) from 3.16.0 to 3.16.1.
+- [Release notes](https://github.com/tox-dev/tox/releases)
+- [Changelog](https://github.com/tox-dev/tox/blob/master/docs/changelog.rst)
+- [Commits](https://github.com/tox-dev/tox/compare/3.16.0...3.16.1)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+634e901966749bcb5dcc43a7a64b3865e2ae1aa3,2020-07-01 16:09:12+00:00,David Lord,update metadata
+1f5a5dce43a23797b4573625b4a76edc37555403,2020-07-02 08:18:52+00:00,dependabot-preview[bot],"Bump pre-commit from 2.5.1 to 2.6.0
+
+Bumps [pre-commit](https://github.com/pre-commit/pre-commit) from 2.5.1 to 2.6.0.
+- [Release notes](https://github.com/pre-commit/pre-commit/releases)
+- [Changelog](https://github.com/pre-commit/pre-commit/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/pre-commit/pre-commit/compare/v2.5.1...v2.6.0)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+7d7e8eef23e3b30a3b1c16215374c9a5ef4ed839,2020-07-02 20:54:40+00:00,Sergei,"API docs - changed flask.request description
+
+ - the link should point to the flask's Request
+ - longer description is unnecessary, as it's all explained above in flask.Request"
+8074cbdc470494a6f20cf08f8831dc4ae388d7f6,2020-07-03 10:25:56+00:00,Deep R. Ode,Added very small clarification to quickstart.rst
+718afcc1078b1d114c6739a0d65229d68246a6ed,2020-07-05 00:25:48+00:00,Grey Li,Improve wording of tip for Unique URLs chapter
+7fbb4f78da0c89c9a466f755fc466c85bf036ca2,2020-07-06 08:38:44+00:00,dependabot-preview[bot],"Bump python-dotenv from 0.13.0 to 0.14.0
+
+Bumps [python-dotenv](https://github.com/theskumar/python-dotenv) from 0.13.0 to 0.14.0.
+- [Release notes](https://github.com/theskumar/python-dotenv/releases)
+- [Changelog](https://github.com/theskumar/python-dotenv/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/theskumar/python-dotenv/compare/v0.13.0...v0.14.0)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+5f6586ae6d5111539b613534d0c746d8cef451c0,2020-07-06 08:43:21+00:00,dependabot-preview[bot],"Bump sphinx from 3.1.1 to 3.1.2
+
+Bumps [sphinx](https://github.com/sphinx-doc/sphinx) from 3.1.1 to 3.1.2.
+- [Release notes](https://github.com/sphinx-doc/sphinx/releases)
+- [Changelog](https://github.com/sphinx-doc/sphinx/blob/3.x/CHANGES)
+- [Commits](https://github.com/sphinx-doc/sphinx/compare/v3.1.1...v3.1.2)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+6979265fa643ed982d062f38d386c37bbbef0d9b,2020-07-06 19:54:26+00:00,pgjones,"Add `async` support
+
+This allows for async functions to be passed to the Flask class
+instance, for example as a view function,
+
+    @app.route(""/"")
+    async def index():
+        return ""Async hello""
+
+this comes with a cost though of poorer performance than using the
+sync equivalent.
+
+asgiref is the standard way to run async code within a sync context,
+and is used in Django making it a safe and sane choice for this."
+4a1acc8b5f0b5608fa8f20a1ef3afc13574cb96e,2020-07-08 13:53:43+00:00,Armin Ronacher,Some small doc fixes
+aab20ad431985b85dbe756b375e6ccfa39132054,2020-07-08 15:26:21+00:00,David Lord,fix typo
+7b09a0904c32dc8784cdd68e842442057340a361,2020-07-11 19:18:37+00:00,Christopher Nguyen,change make_response to use headers.update
+6ef9dafe4da10683508f37747728b64786fe6d9d,2020-07-15 08:08:41+00:00,dependabot-preview[bot],"Bump tox from 3.16.1 to 3.17.0
+
+Bumps [tox](https://github.com/tox-dev/tox) from 3.16.1 to 3.17.0.
+- [Release notes](https://github.com/tox-dev/tox/releases)
+- [Changelog](https://github.com/tox-dev/tox/blob/3.17.0/docs/changelog.rst)
+- [Commits](https://github.com/tox-dev/tox/compare/3.16.1...3.17.0)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+77e33c4de61e17d9ec1b11dbe64d2f743b766c7e,2020-07-16 08:21:32+00:00,dependabot-preview[bot],"Bump tox from 3.17.0 to 3.17.1
+
+Bumps [tox](https://github.com/tox-dev/tox) from 3.17.0 to 3.17.1.
+- [Release notes](https://github.com/tox-dev/tox/releases)
+- [Changelog](https://github.com/tox-dev/tox/blob/master/docs/changelog.rst)
+- [Commits](https://github.com/tox-dev/tox/compare/3.17.0...3.17.1)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+1580aa30cb77c1db119c5c71b88795141d0a5045,2020-07-21 04:06:06+00:00,Grey Li,Update Discord invite links
+b146a13f633b0e2e26e3b8383b3db0feb563bc83,2020-07-22 19:02:31+00:00,yk396,"extract common Flask/Blueprint API to Scaffold base class
+
+Co-authored-by: Chris Nguyen <chrisngyn99@gmail.com>"
+19a0db6d14722aeb6dd711efeafa72fcbc2562e1,2020-07-23 23:50:00+00:00,David Lord,"remove lowest version test until next release
+
+The next major release will depend on the next major releases of all
+the other libraries, which is equivalent to devel right now."
+eb96acec46a74c03b88327c503d0352d6da4a107,2020-07-24 08:01:01+00:00,dependabot-preview[bot],"Bump tox from 3.17.1 to 3.18.0
+
+Bumps [tox](https://github.com/tox-dev/tox) from 3.17.1 to 3.18.0.
+- [Release notes](https://github.com/tox-dev/tox/releases)
+- [Changelog](https://github.com/tox-dev/tox/blob/master/docs/changelog.rst)
+- [Commits](https://github.com/tox-dev/tox/compare/3.17.1...3.18.0)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+75a9b7465003205981b97fd4a133b07d7c330167,2020-07-26 13:28:50+00:00,Martin Thoma,DOC: Remove unnecessary docstrings
+3f8ff0d181f0979a467676287f148afd8ee187d3,2020-07-27 08:31:10+00:00,dependabot-preview[bot],"Bump pip-tools from 5.2.1 to 5.3.0
+
+Bumps [pip-tools](https://github.com/jazzband/pip-tools) from 5.2.1 to 5.3.0.
+- [Release notes](https://github.com/jazzband/pip-tools/releases)
+- [Changelog](https://github.com/jazzband/pip-tools/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/jazzband/pip-tools/compare/5.2.1...5.3.0)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+daf9ec790a14e556049df36904ebc86c45f85b7b,2020-07-28 13:23:00+00:00,jackwardell,"swapping self.assert_equal for assert
+
+self.assert_equal is not in a class and is ambiguous. Beginners might copy and paste this example and not understand it."
+0db95259db5b310c8c4ac9b97ca2b6ae075c06e5,2020-07-28 14:57:24+00:00,David Lord,normalize sentence spacing
+2db3c9a72e446eac980451ef688d87b4fd32cad4,2020-07-28 14:59:19+00:00,David Lord,rewrite external debuggers section
+ba118b4543bbc87cdb9dbe8297029ddddfe8958f,2020-07-28 17:46:22+00:00,David Lord,"adjust header levels and spacing
+
+use code-block consistently"
+d25ee22e34a7682f3f0823b749597bd1dc28441a,2020-07-28 18:07:02+00:00,David Lord,"reduce section on http status codes
+
+formatting in sentry section"
+89d1487b2ed0eb4fc4fb49a50eb54b942bec4193,2020-07-28 18:14:17+00:00,David Lord,"rewrite debugging docs, move to separate page"
+6ff7004db01d0dc3ddbcc943ea727cb1811ba1aa,2020-07-29 08:29:51+00:00,dependabot-preview[bot],"Bump pytest from 5.4.3 to 6.0.0
+
+Bumps [pytest](https://github.com/pytest-dev/pytest) from 5.4.3 to 6.0.0.
+- [Release notes](https://github.com/pytest-dev/pytest/releases)
+- [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+- [Commits](https://github.com/pytest-dev/pytest/compare/5.4.3...6.0.0)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+2a388c4dc00f8bb44b7a557a85ca97f8a913bbac,2020-07-29 08:37:24+00:00,dependabot-preview[bot],"Bump tox from 3.18.0 to 3.18.1
+
+Bumps [tox](https://github.com/tox-dev/tox) from 3.18.0 to 3.18.1.
+- [Release notes](https://github.com/tox-dev/tox/releases)
+- [Changelog](https://github.com/tox-dev/tox/blob/master/docs/changelog.rst)
+- [Commits](https://github.com/tox-dev/tox/compare/3.18.0...3.18.1)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+253570784cdcc85d82142128ce33e3b9d8f8db14,2020-07-31 01:36:55+00:00,David Lord,"cleaner message when CLI can't load app
+
+When loading the app fails for the --help command, only the error
+message is shown, then the help text. The full traceback is shown for
+other exceptions. Also show the message when loading fails while
+getting a command, instead of only ""command not found"". The error
+message goes to stderr to match other error behavior, and is in red
+with an extra newline to make it more obvious next to the help text.
+
+Also fixes an issue with the test_apps fixture that caused an imported
+app to still be importable after the test was over and the path was
+reset. Now the module cache is reset as well."
+ce7ee648b39c9dff05df53d1d007f50c2f146a39,2020-07-31 08:43:34+00:00,dependabot-preview[bot],"Bump pytest from 6.0.0 to 6.0.1
+
+Bumps [pytest](https://github.com/pytest-dev/pytest) from 6.0.0 to 6.0.1.
+- [Release notes](https://github.com/pytest-dev/pytest/releases)
+- [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+- [Commits](https://github.com/pytest-dev/pytest/compare/6.0.0...6.0.1)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+045abd6c04cbb8b08aa1e41f90a5077ac97fee3d,2020-08-03 09:00:22+00:00,dependabot-preview[bot],"Bump pip-tools from 5.3.0 to 5.3.1
+
+Bumps [pip-tools](https://github.com/jazzband/pip-tools) from 5.3.0 to 5.3.1.
+- [Release notes](https://github.com/jazzband/pip-tools/releases)
+- [Changelog](https://github.com/jazzband/pip-tools/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/jazzband/pip-tools/compare/5.3.0...5.3.1)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+414b30b2ec8ae365ca311b697d44578394371ff6,2020-08-07 11:01:42+00:00,Grey Li,Fix bad intersphinx link
+7eeb0c8d220f21fa08414f7726005b7c441a18a1,2020-08-07 11:47:17+00:00,dependabot-preview[bot],"Bump tox from 3.18.1 to 3.19.0
+
+Bumps [tox](https://github.com/tox-dev/tox) from 3.18.1 to 3.19.0.
+- [Release notes](https://github.com/tox-dev/tox/releases)
+- [Changelog](https://github.com/tox-dev/tox/blob/master/docs/changelog.rst)
+- [Commits](https://github.com/tox-dev/tox/compare/3.18.1...3.19.0)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+1a6621ed840994b9600f12dde3bcb898c858889d,2020-08-10 08:09:48+00:00,dependabot-preview[bot],"Bump sphinx from 3.1.2 to 3.2.0
+
+Bumps [sphinx](https://github.com/sphinx-doc/sphinx) from 3.1.2 to 3.2.0.
+- [Release notes](https://github.com/sphinx-doc/sphinx/releases)
+- [Changelog](https://github.com/sphinx-doc/sphinx/blob/3.x/CHANGES)
+- [Commits](https://github.com/sphinx-doc/sphinx/compare/v3.1.2...v3.2.0)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+cf3089a8f82d50430da4cbe690c1ef11d30241ec,2020-08-13 08:36:46+00:00,Nils Philippsen,"Discover app factory deterministically
+
+Commit 2ae740dd4903bbe5f3864384bcdf2ab2d4638bce probably inadvertently
+changed to iterate over a set of ""create_app"", ""make_app"" to discover
+application factory functions. As sets don't guarantee order,
+differences in the implementation of the type can make it
+non-deterministic which factory function is used if a project implements
+both. Revert to using a tuple.
+
+Signed-off-by: Nils Philippsen <nils@redhat.com>"
+7be45a4c5bb557cde56efac0cb85e0a9120acc37,2020-08-17 08:34:56+00:00,dependabot-preview[bot],"Bump sphinx from 3.2.0 to 3.2.1
+
+Bumps [sphinx](https://github.com/sphinx-doc/sphinx) from 3.2.0 to 3.2.1.
+- [Release notes](https://github.com/sphinx-doc/sphinx/releases)
+- [Changelog](https://github.com/sphinx-doc/sphinx/blob/3.x/CHANGES)
+- [Commits](https://github.com/sphinx-doc/sphinx/compare/v3.2.0...v3.2.1)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+1f1b65a62576bc6a2f9cd27e9a725f0554fc70c7,2020-08-23 06:56:24+00:00,WolframAlph,fixed #3738 typo in src/flask/blueprints.py
+fe55f92cdc575d00204a134b2d556c1053e1ed4e,2020-08-24 01:52:28+00:00,Joshua Bronson,"Fix pre-commit cache key in GitHub Actions. (#3740)
+
+Fix pre-commit cache key to include full Python version as per
+https://github.com/pre-commit/pre-commit/issues/1575#issuecomment-678792700
+and https://pre-commit.com/#github-actions-example"
+0885e68beb2ec2ba39a4ec1fb4097d082644e228,2020-08-24 08:17:04+00:00,dependabot-preview[bot],"Bump pre-commit from 2.6.0 to 2.7.1
+
+Bumps [pre-commit](https://github.com/pre-commit/pre-commit) from 2.6.0 to 2.7.1.
+- [Release notes](https://github.com/pre-commit/pre-commit/releases)
+- [Changelog](https://github.com/pre-commit/pre-commit/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/pre-commit/pre-commit/compare/v2.6.0...v2.7.1)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+5bfe236fb531045497396bc85ee5026c6c9c68eb,2020-08-26 16:20:21+00:00,ongopongo,fix typo in flask shell help (#3744)
+a1fb8f143f5deb545a10ac2758cb7a2b2bd68df3,2020-08-31 01:53:09+00:00,Ryuichi Watanabe,update cache action to v2 (#3749)
+983af125acfd26779521b3bd0c08842e935df1de,2020-09-07 08:17:58+00:00,dependabot-preview[bot],"Bump tox from 3.19.0 to 3.20.0
+
+Bumps [tox](https://github.com/tox-dev/tox) from 3.19.0 to 3.20.0.
+- [Release notes](https://github.com/tox-dev/tox/releases)
+- [Changelog](https://github.com/tox-dev/tox/blob/master/docs/changelog.rst)
+- [Commits](https://github.com/tox-dev/tox/compare/3.19.0...3.20.0)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+ad10d12177c99fbe0f3e07c92efc492b0171fd1c,2020-09-14 08:18:57+00:00,dependabot-preview[bot],"Bump pytest from 6.0.1 to 6.0.2
+
+Bumps [pytest](https://github.com/pytest-dev/pytest) from 6.0.1 to 6.0.2.
+- [Release notes](https://github.com/pytest-dev/pytest/releases)
+- [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+- [Commits](https://github.com/pytest-dev/pytest/compare/6.0.1...6.0.2)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+de464c03e134127140e5622e230790806a133ff9,2020-09-15 16:20:10+00:00,girst,Correct Sentry advertisement (not Free Software) (#3758)
+12a4d1554689c0a0ac13988b0daf10c23c37c81d,2020-09-25 23:52:00+00:00,Ebram Shehata,Update quickstart.rst (#3767)
+598c56c4983b33cbd9178f28516ebee33dd10fdd,2020-09-28 13:21:59+00:00,miquelvir,fix grammar (#3769)
+7e312c421ee1ccd57a6f1a5c43a00e8e4ec6a7d9,2020-09-28 14:21:13+00:00,sblondon,aesthetic: add a space after a comma (#3771)
+84a4669e54cc15e1c0e681ac6c4a7ae24db05342,2020-10-01 08:24:03+00:00,dependabot-preview[bot],"Bump greenlet from 0.4.16 to 0.4.17
+
+Bumps [greenlet](https://github.com/python-greenlet/greenlet) from 0.4.16 to 0.4.17.
+- [Release notes](https://github.com/python-greenlet/greenlet/releases)
+- [Changelog](https://github.com/python-greenlet/greenlet/blob/master/NEWS)
+- [Commits](https://github.com/python-greenlet/greenlet/compare/0.4.16...0.4.17)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+8efea0ccbbf0985e0c3c001e5bd90b4912a18f54,2020-10-03 14:05:05+00:00,Bogdan Opanchuk,"Break reference cycle created by default in Flask instances.
+
+Flask instances with static folders were creating a reference cycle
+via their ""static"" view function (which held a strong reference back
+to the Flask instance to call its `send_static_file` method). This
+prevented CPython from freeing the memory for a Flask instance
+when all external references to it were released.
+
+Now use a weakref for the back reference to avoid this.
+
+Co-authored-by: Joshua Bronson <jab@users.noreply.github.com>"
+bdf7083cfdeef0e0bdd0bf6d4c23b26c92b52d95,2020-10-07 15:06:29+00:00,Matěj Volf,refer to encoder instead of decoder
+76467527d6e44474cbe8982fff4e37f91214c036,2020-10-10 05:30:11+00:00,Karthikeyan Singaravelan,test Python 3.9
+fa5aebc842c1cd19a57503984310db21aa512904,2020-10-12 02:15:19+00:00,Henry Kobin,updated Sentry link (#3788)
+8c6baeedab60e0041317c2709df100dfd216c2ef,2020-10-12 02:16:17+00:00,Paul Sanders,parametrize some tests (#3786)
+9d824db41c930126db7bc6af5c54eec670cf086c,2020-10-15 21:02:54+00:00,Jamiu Salimon,"Update the signature of the teardown function (#3730)
+
+Co-authored-by: David Lord <davidism@gmail.com>"
+c5a5d9b30bafcc242c0ae6004d71f7238e002e06,2020-10-15 21:03:39+00:00,dependabot-preview[bot],"Bump pytest from 6.0.2 to 6.1.1 (#3790)
+
+Bumps [pytest](https://github.com/pytest-dev/pytest) from 6.0.2 to 6.1.1.
+- [Release notes](https://github.com/pytest-dev/pytest/releases)
+- [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+- [Commits](https://github.com/pytest-dev/pytest/compare/6.0.2...6.1.1)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>
+
+Co-authored-by: dependabot-preview[bot] <27856297+dependabot-preview[bot]@users.noreply.github.com>"
+1035efc7d6e49a459ec2dcbfab9526a7347d6f2e,2020-10-15 21:08:37+00:00,Grey Li,"Add command switch tabs for Bash, CMD and Powershell with sphinx-tabs (#3714)
+
+* Enable Sphinx extension sphinx-tabs
+
+* Add command tabs for all export commands
+
+* Add command tabs for all venv commands
+
+Fix trim spaces"
+01621485fdad733b0886117d59bea1adac8d4fcc,2020-10-17 01:57:56+00:00,Matthew Preble,Ensure session_interface.open_session is called after URL matching (#3776)
+070a0c1c759e686ac03e9cdfca64b116665df6d4,2020-10-21 21:13:41+00:00,Bart Broere,removing outdated xhtml information (#3802)
+5d60cce2429e2c7e11e9acc5ea030464bf169f84,2020-10-29 16:33:20+00:00,Sebastian Höffner,Updating external_url_handler example to Python 3 (#3816)
+1c6dc15420b21fc325833ab2955375e9736f2e74,2020-11-01 02:19:11+00:00,David Lord,fix response bases order
+2676973cd7d7db2ae83f1ef3034fadad8c5236da,2020-11-01 03:03:27+00:00,David Lord,"remove pre-commit job, using pre-commit.ci now"
+7c20611cdded4176cb4d17e3292137b96feec356,2020-11-01 03:09:57+00:00,Viet Hung Nguyen,mkstemp returns a file descriptor (#3809)
+a0e2aca770c756d9f7de53339e2cf9067a52df11,2020-11-01 03:13:03+00:00,David Lord,move json tests to separate file
+6def8a4a489ce1321a44bc1947c5c86620afdb3f,2020-11-01 03:17:04+00:00,David Lord,test json.dumps for object with __html__ method
+65de6ccc0fc54790d84d1124f9f1236e0fc7b7d8,2020-11-01 13:20:48+00:00,dependabot-preview[bot],"Bump pre-commit from 2.7.1 to 2.8.2 (#3821)
+
+Bumps [pre-commit](https://github.com/pre-commit/pre-commit) from 2.7.1 to 2.8.2.
+- [Release notes](https://github.com/pre-commit/pre-commit/releases)
+- [Changelog](https://github.com/pre-commit/pre-commit/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/pre-commit/pre-commit/compare/v2.7.1...v2.8.2)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>
+
+Co-authored-by: dependabot-preview[bot] <27856297+dependabot-preview[bot]@users.noreply.github.com>"
+f7e33f240ee595349a46bf4eef95e1d9bdfee3da,2020-11-01 13:21:10+00:00,dependabot-preview[bot],"Bump sphinx-tabs from 1.1.13 to 1.3.0 (#3822)
+
+Bumps [sphinx-tabs](https://github.com/executablebooks/sphinx-tabs) from 1.1.13 to 1.3.0.
+- [Release notes](https://github.com/executablebooks/sphinx-tabs/releases)
+- [Changelog](https://github.com/executablebooks/sphinx-tabs/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/executablebooks/sphinx-tabs/compare/v1.1.13...v1.3.0)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>
+
+Co-authored-by: dependabot-preview[bot] <27856297+dependabot-preview[bot]@users.noreply.github.com>"
+aa0c9493c67a878b4e67dbe620e0d780cf961d56,2020-11-01 13:21:27+00:00,dependabot-preview[bot],"Bump tox from 3.20.0 to 3.20.1 (#3819)
+
+Bumps [tox](https://github.com/tox-dev/tox) from 3.20.0 to 3.20.1.
+- [Release notes](https://github.com/tox-dev/tox/releases)
+- [Changelog](https://github.com/tox-dev/tox/blob/master/docs/changelog.rst)
+- [Commits](https://github.com/tox-dev/tox/compare/3.20.0...3.20.1)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>
+
+Co-authored-by: dependabot-preview[bot] <27856297+dependabot-preview[bot]@users.noreply.github.com>"
+3b57c19e3bd6acf729ae40ece710b20f7f5997e7,2020-11-01 13:21:41+00:00,dependabot-preview[bot],"Bump pytest from 6.1.1 to 6.1.2 (#3818)
+
+Bumps [pytest](https://github.com/pytest-dev/pytest) from 6.1.1 to 6.1.2.
+- [Release notes](https://github.com/pytest-dev/pytest/releases)
+- [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+- [Commits](https://github.com/pytest-dev/pytest/compare/6.1.1...6.1.2)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>
+
+Co-authored-by: dependabot-preview[bot] <27856297+dependabot-preview[bot]@users.noreply.github.com>"
+373f0dd82e68ab7cac7a77344e715dbe68faebd3,2020-11-01 13:30:02+00:00,David Lord,update requirements (#3823)
+7a444c5dab97d640282ec8fc4838bef2c128273f,2020-11-05 02:00:21+00:00,David Lord,"update tests for new werkzeug client (#3827)
+
+Flask's client.open mirrors Werkzeug's for processing an existing
+environ.
+
+Always test with latest code for other Pallets projects. This will
+be changed back once the new versions are released."
+22987b68173e9bf56cc450cb7aeb93f5480a2660,2020-11-05 02:16:05+00:00,Mathurshan Vimalesvaran,include samesite and secure when removing session cookie (#3726)
+577eec198adfb0a69f059e87c53d6ace55c55a77,2020-11-05 02:20:36+00:00,Sarthak Vineet Kumar,"updated doc for mod_wsgi (#3751)
+
+Co-authored-by: Sarthak <sarthak@MacBook.local>"
+dc11cdb4a4627b9f8c79e47e39aa7e1357151896,2020-11-05 17:00:57+00:00,David Lord,"move send_file and send_from_directory to Werkzeug
+
+The implementations were moved to Werkzeug, Flask's functions become
+wrappers around Werkzeug to pass some Flask-specific values.
+
+cache_timeout is renamed to max_age. SEND_FILE_MAX_AGE_DEFAULT,
+app.send_file_max_age_default, and app.get_send_file_max_age defaults
+to None. This tells the browser to use conditional requests rather than
+a 12 hour cache.
+
+attachment_filename is renamed to download_name, and is always sent if
+a name is known.
+
+Deprecate helpers.safe_join in favor of werkzeug.utils.safe_join.
+
+Removed most of the send_file tests, they're tested in Werkzeug.
+
+In the file upload example, renamed the uploaded_file view to
+download_file to avoid a common source of confusion."
+f325b8b5be07233747c2968af281552437067215,2020-11-14 00:28:13+00:00,David Lord,add lock threads workflow
+b2464883ce2cb7fe1b5d48509dd9a3a3ea7aeb01,2020-11-14 13:38:05+00:00,David Lord,reduce lock schedule to daily
+11798fd01b275b2dbb448c15ecdba0c9a7d973ad,2020-11-16 17:05:38+00:00,pre-commit-ci[bot],[pre-commit.ci] pre-commit autoupdate
+d6b974f821fe37bb782a80e64174ee3180fc5215,2020-11-17 17:38:38+00:00,Pedro Lourenço,update deprecated set-env ci command (#3835)
+0855252f8c07084745fc598579ad40447a26d1f5,2020-11-17 17:58:43+00:00,Pedro Lourenço,Fix ci environment command syntax (#3836)
+cd3a93a9c1aaf8440d366cbebbc852e1033914cd,2020-11-23 17:15:58+00:00,pre-commit-ci[bot],[pre-commit.ci] pre-commit autoupdate
+cab8121d8f94a465c11814010f4453d1bf61008a,2020-12-21 16:44:52+00:00,pre-commit-ci[bot],[pre-commit.ci] pre-commit autoupdate
+7d3ae48d57e1f989dfec42e98997ca8b75370c9a,2020-12-30 10:57:37+00:00,jordivandooren,"fix explanation of wheel name (#3848)
+
+* fix explanation of wheel name
+
+* Improve the description of wheel filename format
+
+Co-authored-by: Grey Li <withlihui@gmail.com>"
+e4c70eff7747abf12726d90f38d3c28006baf087,2021-01-01 09:42:01+00:00,dependabot-preview[bot],"Bump sphinx from 3.2.1 to 3.4.1
+
+Bumps [sphinx](https://github.com/sphinx-doc/sphinx) from 3.2.1 to 3.4.1.
+- [Release notes](https://github.com/sphinx-doc/sphinx/releases)
+- [Changelog](https://github.com/sphinx-doc/sphinx/blob/3.x/CHANGES)
+- [Commits](https://github.com/sphinx-doc/sphinx/compare/v3.2.1...v3.4.1)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+2622739771778f2b901de5ad690ab1028c2a1df0,2021-01-01 09:42:25+00:00,dependabot-preview[bot],"Bump pre-commit from 2.8.2 to 2.9.3
+
+Bumps [pre-commit](https://github.com/pre-commit/pre-commit) from 2.8.2 to 2.9.3.
+- [Release notes](https://github.com/pre-commit/pre-commit/releases)
+- [Changelog](https://github.com/pre-commit/pre-commit/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/pre-commit/pre-commit/compare/v2.8.2...v2.9.3)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+d1a21022e0cf6b7243ce26965a13a0b8fe371f10,2021-01-01 09:46:36+00:00,dependabot-preview[bot],"Bump pip-tools from 5.3.1 to 5.5.0
+
+Bumps [pip-tools](https://github.com/jazzband/pip-tools) from 5.3.1 to 5.5.0.
+- [Release notes](https://github.com/jazzband/pip-tools/releases)
+- [Changelog](https://github.com/jazzband/pip-tools/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/jazzband/pip-tools/compare/5.3.1...5.5.0)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+a7cf23a2343e04e61bb770d373a29e2666c56330,2021-01-01 09:51:33+00:00,dependabot-preview[bot],"Bump packaging from 20.4 to 20.8
+
+Bumps [packaging](https://github.com/pypa/packaging) from 20.4 to 20.8.
+- [Release notes](https://github.com/pypa/packaging/releases)
+- [Changelog](https://github.com/pypa/packaging/blob/master/CHANGELOG.rst)
+- [Commits](https://github.com/pypa/packaging/compare/20.4...20.8)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+eb41e7e417cbf53d19517e356381423cfd256c2f,2021-01-03 05:55:10+00:00,Grey Li,Silence pytest warnings for exception propagation test
+da8865bd6425a8f286ffbe73a46437bf4dac8adc,2021-01-03 06:10:26+00:00,Grey Li,Bump pytest from 6.1.2 to 6.2.1
+aff21fd8bc4d168caf481de87bb5447adccd18ad,2021-01-03 08:00:33+00:00,huimingz,"Document parameter description error
+
+The loads function has the wrong 'kwargs' parameter description"
+2fab8a31ae2639b3eacdd3935d58203b09650f29,2021-01-04 02:32:01+00:00,Grey Li,Fix broken func directives in docstrings
+54ae1cb0e902aac1bce44e2a315650d395c710b5,2021-01-06 14:31:23+00:00,Grey Li,Update the example in README
+7068d0983a29eb411bcd361ef8b764a8d10684ed,2021-01-27 17:08:02+00:00,Elliott King,Clarify json error handling
+fdba0d2526347786c05c15027e183a5ba4d81114,2021-01-29 18:35:37+00:00,David Lord,remove JSONMixin
+1936ca8a2e1789efd6169a901a8b60ec62ceb578,2021-01-29 18:38:40+00:00,David Lord,remove BaseRequest and BaseResponse
+14f56363a4992506f2b3670985fca4f0a29e5176,2021-01-29 18:44:46+00:00,David Lord,rename send_file add_etags to etag
+eb42655c46f8a598f2e0ead624ba5a65a8a66e90,2021-01-29 19:03:33+00:00,David Lord,simplify BadRequestKeyError.show_exception
+64206c13c2bff0220328845db0995f451cefd3b1,2021-01-29 19:26:17+00:00,David Lord,simplify InternalServerError.original_exception
+055cdc2625c0cdf8cea87524f5c6bcf07f7e5005,2021-01-29 19:29:36+00:00,David Lord,click detects program name when run as module
+451c1f87f39253c35360f3e9e004df19e0c74638,2021-01-30 22:36:47+00:00,Tony De La Nuez,"got_request_exception only sends unhandled exceptions
+
+Co-authored-by: David Lord <davidism@gmail.com>"
+d55ee5b91759c411d90ebb2046466fb27640d5ff,2021-02-01 16:50:13+00:00,pre-commit-ci[bot],[pre-commit.ci] pre-commit autoupdate
+81ba6c24efea58dd00c093448fa2e529c0cda507,2021-02-02 03:14:58+00:00,David Lord,remove Jinja 'autoescape' and 'with' extensions
+78bcf1d8c6e9a63ea818d2febaa56c4878e90db6,2021-02-02 03:27:50+00:00,dependabot-preview[bot],"Bump tox from 3.20.1 to 3.21.3
+
+Bumps [tox](https://github.com/tox-dev/tox) from 3.20.1 to 3.21.3.
+- [Release notes](https://github.com/tox-dev/tox/releases)
+- [Changelog](https://github.com/tox-dev/tox/blob/master/docs/changelog.rst)
+- [Commits](https://github.com/tox-dev/tox/compare/3.20.1...3.21.3)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+b379bd4a781ed09c8f2d8d0756fb4bed1cc598a8,2021-02-02 03:33:13+00:00,dependabot-preview[bot],"Bump pre-commit from 2.9.3 to 2.10.0
+
+Bumps [pre-commit](https://github.com/pre-commit/pre-commit) from 2.9.3 to 2.10.0.
+- [Release notes](https://github.com/pre-commit/pre-commit/releases)
+- [Changelog](https://github.com/pre-commit/pre-commit/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/pre-commit/pre-commit/compare/v2.9.3...v2.10.0)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+5ecbf1e3337e7622b6508791b6c095cf91b7c544,2021-02-02 03:33:16+00:00,dependabot-preview[bot],"Bump greenlet from 0.4.17 to 1.0.0
+
+Bumps [greenlet](https://github.com/python-greenlet/greenlet) from 0.4.17 to 1.0.0.
+- [Release notes](https://github.com/python-greenlet/greenlet/releases)
+- [Changelog](https://github.com/python-greenlet/greenlet/blob/master/CHANGES.rst)
+- [Commits](https://github.com/python-greenlet/greenlet/compare/0.4.17...1.0.0)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+c52ffa8ae7252a45b14e8cfa53b0fe5988210388,2021-02-02 03:33:21+00:00,dependabot-preview[bot],"Bump sphinx-tabs from 1.3.0 to 2.0.0
+
+Bumps [sphinx-tabs](https://github.com/executablebooks/sphinx-tabs) from 1.3.0 to 2.0.0.
+- [Release notes](https://github.com/executablebooks/sphinx-tabs/releases)
+- [Changelog](https://github.com/executablebooks/sphinx-tabs/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/executablebooks/sphinx-tabs/compare/v1.3.0...v2.0.0)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+7eebe22cf517702cd26a18ae95e75e83ec587cc5,2021-02-02 03:37:40+00:00,dependabot-preview[bot],"Bump sphinx from 3.4.1 to 3.4.3
+
+Bumps [sphinx](https://github.com/sphinx-doc/sphinx) from 3.4.1 to 3.4.3.
+- [Release notes](https://github.com/sphinx-doc/sphinx/releases)
+- [Changelog](https://github.com/sphinx-doc/sphinx/blob/3.x/CHANGES)
+- [Commits](https://github.com/sphinx-doc/sphinx/compare/v3.4.1...v3.4.3)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+296bd2f4cc0141db11629d1339359771cc4eba38,2021-02-02 03:37:53+00:00,dependabot-preview[bot],"Bump jinja2 from 2.11.2 to 2.11.3
+
+Bumps [jinja2](https://github.com/pallets/jinja) from 2.11.2 to 2.11.3.
+- [Release notes](https://github.com/pallets/jinja/releases)
+- [Changelog](https://github.com/pallets/jinja/blob/master/CHANGES.rst)
+- [Commits](https://github.com/pallets/jinja/compare/2.11.2...2.11.3)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+510268e91415aa2e759436eb148bfd5e12f313e5,2021-02-02 03:41:04+00:00,dependabot-preview[bot],"Bump pytest from 6.2.1 to 6.2.2
+
+Bumps [pytest](https://github.com/pytest-dev/pytest) from 6.2.1 to 6.2.2.
+- [Release notes](https://github.com/pytest-dev/pytest/releases)
+- [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+- [Commits](https://github.com/pytest-dev/pytest/compare/6.2.1...6.2.2)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+fb5f04a8c71499391bab37aa4004ecc652724e0d,2021-02-02 03:45:39+00:00,dependabot-preview[bot],"Bump packaging from 20.8 to 20.9
+
+Bumps [packaging](https://github.com/pypa/packaging) from 20.8 to 20.9.
+- [Release notes](https://github.com/pypa/packaging/releases)
+- [Changelog](https://github.com/pypa/packaging/blob/main/CHANGELOG.rst)
+- [Commits](https://github.com/pypa/packaging/compare/20.8...20.9)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+b473e7c97c7c557e64fb84236c7d346b6ad16736,2021-02-02 06:41:49+00:00,David Lord,use Jinja's tojson filter
+3fe23bf899d3454eb7e7fd1eb0b7a812497cd365,2021-02-08 16:50:03+00:00,pre-commit-ci[bot],[pre-commit.ci] pre-commit autoupdate
+0ee1b0b5d9712b6cf2f22429db98549e1a0c8cb8,2021-02-09 02:04:02+00:00,David Lord,remove test relying on Werkzeug Local internals
+bfd4dc6d3065b87130b246f377cfc250fecec58b,2021-02-09 02:15:26+00:00,David Lord,update test config
+571e638e2accf8cff6682227a564ffd5deac7e67,2021-02-09 02:17:24+00:00,David Lord,update issue templates
+dbe76bb75d597401d33ef428d79540797e9297b3,2021-02-09 02:20:48+00:00,David Lord,"add security policy
+
+copy from pallets/.github repo
+github was using docs/security.rst by mistake"
+3c00658772983f95016d300a87951da45e8d0701,2021-02-09 02:23:10+00:00,David Lord,update requirements
+b496d8b7cb72f29dc91d2859829caedae25d62ea,2021-02-09 02:26:37+00:00,David Lord,update contributing guide
+c6c6408c3fb96245a2e2afc4b754cdf065fdad47,2021-02-10 21:14:58+00:00,pgjones,"Raise a runtime error if run_async is called without real ContextVars
+
+Werkzeug offers a ContextVar replacement for Python < 3.7, however it
+doesn't work across asyncio tasks, hence it makes sense to error out
+rather than find there are odd bugs.
+
+Note the docs build requires the latest (dev) Werkzeug due to this
+change (to import ContextVar from werkzeug.local)."
+705e52684a9063889c16a289695a2e4429df6887,2021-02-14 11:08:21+00:00,pgjones,"Add syntatic sugar for route registration
+
+This takes a popular API whereby instead of passing the HTTP method as
+an argument to route it is instead used as the method name i.e.
+
+    @app.route(""/"", methods=[""POST""])
+
+is now writeable as,
+
+    @app.post(""/"")
+
+This is simply syntatic sugar, it doesn't do anything else, but makes
+it slightly easier for users.
+
+I've included all the methods that are relevant and aren't auto
+generated i.e. not connect, head, options, and trace."
+8d9501598ff066706c1300a9f6f5193912f2cb4d,2021-02-16 16:36:14+00:00,David Lord,"use rtd to build docs for prs
+
+skip code tests when only docs change"
+76abbe9062ee6752d94003c9ca72fe2db5caf100,2021-02-19 14:59:09+00:00,Grey Li,Remove the mention of Flask-OAuth in the extension dev docs
+fd62210f583e90764be6e8d9f295f37f33a65e48,2021-02-21 12:55:30+00:00,pgjones,"Utilise defaultdicts
+
+This code originates from the Python 2.4 supporting version of Flask,
+with defaultdicts being added in 2.5. Using defaultdict makes the
+intentional usage clearer, and slightly simplifies the code."
+83d358d2c43c79b7d7fe5365e079447296c65eaf,2021-02-23 20:19:53+00:00,pgjones,"remove _blueprint_order, dicts are ordered
+
+This code originates from supporting Python 2.4. Dicts are ordered in
+supported Pythons as of 3.6. An OrderedDict could be used to indicate
+that order matters, but is not since we don't rely on the implementation
+differences."
+3cd615a1d6db7e319c27bca2499ab7390065f090,2021-02-24 18:09:15+00:00,David Lord,update project links
+9e7d3a6b694b27f997266889ae463e06dd83a189,2021-02-24 18:09:38+00:00,David Lord,docs rename changelog to changes
+0c7cbe2d1186f53efcd0da0589a2eaf0382e4d39,2021-02-24 18:09:50+00:00,David Lord,move version to setup.cfg
+f92e820b4bf357e9792d08ce398802715a63eafe,2021-02-24 21:18:12+00:00,pgjones,"Nested blueprints
+
+This allows blueprints to be nested within blueprints via a new
+Blueprint.register_blueprint method. This should provide a use case
+that has been desired for the past ~10 years.
+
+This works by setting the endpoint name to be the blueprint names,
+from parent to child delimeted by ""."" and then iterating over the
+blueprint names in reverse order in the app (from most specific to
+most general). This means that the expectation of nesting a blueprint
+within a nested blueprint is met."
+49b7341a491e01cd6a08238ca63bd46ae53a009f,2021-02-25 17:42:44+00:00,Grey Li,update json.dumps for http_date changes
+6e7869ec49a42c1d7964fb8a62eded25b0321970,2021-03-01 15:15:58+00:00,dependabot-preview[bot],"Bump tox from 3.21.4 to 3.22.0
+
+Bumps [tox](https://github.com/tox-dev/tox) from 3.21.4 to 3.22.0.
+- [Release notes](https://github.com/tox-dev/tox/releases)
+- [Changelog](https://github.com/tox-dev/tox/blob/master/docs/changelog.rst)
+- [Commits](https://github.com/tox-dev/tox/compare/3.21.4...3.22.0)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+1748bb02eb29760796c2e6f59e7c9d77ccaeda2e,2021-03-01 15:17:54+00:00,dependabot-preview[bot],"Bump sphinx from 3.4.3 to 3.5.1
+
+Bumps [sphinx](https://github.com/sphinx-doc/sphinx) from 3.4.3 to 3.5.1.
+- [Release notes](https://github.com/sphinx-doc/sphinx/releases)
+- [Changelog](https://github.com/sphinx-doc/sphinx/blob/3.x/CHANGES)
+- [Commits](https://github.com/sphinx-doc/sphinx/compare/v3.4.3...v3.5.1)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+9f7c602a84faa8371be4ece23e4405282d1283d2,2021-03-08 20:16:39+00:00,David Lord,move _PackageBoundObject into Scaffold
+7029674775023c076a1dc03367214d178423809a,2021-03-08 23:05:47+00:00,David Lord,rewrite Scaffold docs
+25ab05e6a2ae248ab76002807d47c23952492f17,2021-03-09 16:06:43+00:00,David Lord,remove old note about InternalServerError
+33145c36991c503aeb1e5870c27b720ec80d5079,2021-03-10 13:40:29+00:00,Grey Li,Set default encoding to UTF-8 for load_dotenv
+ef52e3e4a379b16a8b906ff101c6edae71d80dc9,2021-03-10 18:11:26+00:00,David Lord,remove redundant _register_error_handler
+3dfc12e8d82a66c4041783fcaec58a7a24dbe348,2021-03-10 18:51:06+00:00,David Lord,only extend on first registration
+46d8e90f29d5363239ad02446eaf535c2a6b2308,2021-03-15 17:00:57+00:00,pre-commit-ci[bot],[pre-commit.ci] pre-commit autoupdate
+6eeaa2e50d2e3ff776085d0b28d58d1db65a0538,2021-03-16 16:30:54+00:00,kangetsu121,fix a broken link
+06fd6aca27cca6eae7ab00379f5ad9300e339d11,2021-03-22 17:04:33+00:00,pre-commit-ci[bot],[pre-commit.ci] pre-commit autoupdate
+00f5a3e55ca3b6dd4e98044ab76f055dc74997ac,2021-03-24 20:47:55+00:00,pgjones,"Alter ensure_sync implementation to support extensions
+
+This allows extensions to override the Flask.ensure_sync method and
+have the change apply to blueprints as well. Without this change it is
+possible for differing blueprints to have differing ensure_sync
+approaches depending on the extension used - which would likely result
+in event-loop blocking issues.
+
+This also allows blueprints to have a custom ensure_sync, although
+this is a by product rather than an expected use case."
+70b58c82d9d19932ea3049415a785718e07c830e,2021-04-05 17:10:21+00:00,pre-commit-ci[bot],[pre-commit.ci] pre-commit autoupdate
+285a873ce921c1f2c52f15e1f58bcd3eae39596e,2021-04-06 17:46:53+00:00,dependabot-preview[bot],"[Security] Bump urllib3 from 1.26.3 to 1.26.4
+
+Bumps [urllib3](https://github.com/urllib3/urllib3) from 1.26.3 to 1.26.4. **This update includes a security fix.**
+- [Release notes](https://github.com/urllib3/urllib3/releases)
+- [Changelog](https://github.com/urllib3/urllib3/blob/main/CHANGES.rst)
+- [Commits](https://github.com/urllib3/urllib3/compare/1.26.3...1.26.4)
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>"
+61fbae866478c19ea5f5c3b9b571a4fad0ba7e5c,2021-04-06 22:31:16+00:00,David Lord,skip async tests if asgiref isn't installed
+dc3e9c0cc36b7945431454ea1543da4e33023bb2,2021-04-06 22:31:28+00:00,David Lord,update async docs
+6d5ccdefe29292974d0bb8e1d80dcd1a06f28368,2021-04-11 08:10:54+00:00,pgjones,"Bugfix iscoroutinefunction with Python3.7
+
+See this Python bug https://bugs.python.org/issue33261. The
+iscoroutinefunction doesn't recognise partially wrapped coroutine
+functions as coroutine functions - which is problematic as the
+coroutines will be called as if they are sync, which results in
+un-awaited coroutines."
+08693ae91783bef4f13346d73472b45a40f26c6c,2021-04-12 17:12:29+00:00,pre-commit-ci[bot],[pre-commit.ci] pre-commit autoupdate
+32272da9ac6e16fa22d3401b2d995d5bf3db9492,2021-04-14 17:01:32+00:00,David Lord,"shell calls sys.__interativehook__
+
+This will set up readline tab and history completion by default."
+8ab4967703c2f5c500174f46b672d80e32f55d85,2021-04-15 22:58:24+00:00,David Lord,consistent versions and deprecation messages
+5a7a4ab4c5eed63a23762e09b7e6a739375ad0f0,2021-04-16 05:59:21+00:00,David Lord,locked_cached_property subclasses cached_property
+85b430a3669191ee0d092393f98c0dae47218cab,2021-04-16 06:05:24+00:00,David Lord,deprecate total_seconds
+ec27677f956859fb91c87c4ec7e2766873e67bc0,2021-04-16 06:07:41+00:00,David Lord,remove _os_alt_seps
+5c6a0f0c121297362b4c78e4240dd8445b9d9f12,2021-04-16 11:34:51+00:00,pgjones,"Fix wrapped view function comparison
+
+Wrapped functions are not comparable, see
+https://bugs.python.org/issue3564, therefore a marker is used to note
+when the function has been sync wrapped to allow comparison with the
+wrapped function instead.
+
+This ensures that multiple route decorators work without raising
+exceptions i.e.,
+
+    @app.route(""/"")
+    @app.route(""/a"")
+    async def index():
+        ...
+
+works."
+e00a4a4b445b07a10ad79b4bfef78d1f57bb3b66,2021-04-16 15:43:31+00:00,David Lord,update pallets-sphinx-themes
+078a3c3631b43e3c85123d7fc44270be6c05a4db,2021-04-16 15:44:18+00:00,David Lord,update requirements
+afda0ed9f2e8e45b152919573858627a1cc86d3a,2021-04-16 15:44:30+00:00,David Lord,update deprecated pre-commit hook
+07000942dacaeffa84d9db57ea42570fcfb0395e,2021-04-16 15:45:04+00:00,David Lord,update minimum install requirements
+7df5db7b0c78b0588f82f2148b51461f94320b90,2021-04-16 15:45:26+00:00,David Lord,release version 2.0.0rc1
+1c3b53c5db3c9c0f7a1f1650b020e6302705395b,2021-04-17 10:27:38+00:00,pgjones,"Update the docs on serving with ASGI
+
+Whilst it has been possible to serve via an ASGI server for a while
+(using WSGI to ASGI middleware/adapters) it hasn't added much. Now
+though it makes sense to recommend the asgiref adapter as it
+integrates with the same event loop used for async route handlers
+etc..."
+f74cce164e2065a866bf6d89e53fa5a4b4840cf2,2021-04-17 10:49:24+00:00,pgjones,"Update documentation on asyncio background tasks
+
+This has been an early question from users, so best to explain."
+c791f6312b092678c2a152d0605e49c26831cb05,2021-04-22 12:34:55+00:00,Grey Li,Fix typo in issue template
+f405c6f19e002ae13708cb33f6d48257cc1ea37a,2021-04-23 08:44:15+00:00,pgjones,"Initial typing support
+
+This enables type checking in CI and marks the project as typed."
+77237093da25438c88b0a74c374a397d4bf823eb,2021-04-24 11:22:26+00:00,pgjones,"Add initial type hints
+
+This should make it easier for users to correctly use Flask. The hints
+are from Quart."
+e6e75e55470a0682ee8370e6d68062e515a248b9,2021-04-24 14:31:16+00:00,David Lord,changelog for bumped pallets versions
+10b0d6b33f7a4414fd3f4474c0deceed2e40117e,2021-04-24 16:35:41+00:00,Adrian Moennich,"Move get_root_path back to flask.helpers
+
+Many libraries use it so the move is somewhat disruptive."
+26a6cc0f94dd25390e2b2d7462bb4a414a862b16,2021-04-24 18:01:09+00:00,Adrian Moennich,"Allow using Click 7 with a DeprecationWarning
+
+As long as popular libraries (e.g. Celery) require click 7, depending
+on Click 8 in Flask makes it hard to test the latest version (and its
+other dependencies) in existing applications."
+b373e7a456f1be4efb6f27c4a21af0dd04260229,2021-04-26 17:21:56+00:00,pre-commit-ci[bot],"[pre-commit.ci] pre-commit autoupdate
+
+updates:
+- [github.com/asottile/pyupgrade: v2.12.0 → v2.13.0](https://github.com/asottile/pyupgrade/compare/v2.12.0...v2.13.0)
+- [github.com/asottile/reorder_python_imports: v2.4.0 → v2.5.0](https://github.com/asottile/reorder_python_imports/compare/v2.4.0...v2.5.0)
+- [github.com/psf/black: 20.8b1 → 21.4b0](https://github.com/psf/black/compare/20.8b1...21.4b0)"
+9be01564f28ed49cbf55049265bd578c7a7257e1,2021-04-28 06:02:19+00:00,Grey Li,Update changelog for #3932
+d124214129fd76cd620736f9dadc5e726eb8f34f,2021-04-28 16:46:45+00:00,dependabot-preview[bot],Upgrade to GitHub-native Dependabot
+36e6ec45a9885fb1a6a22b0eb15b8810a8712418,2021-04-28 20:54:53+00:00,dependabot[bot],"Bump pre-commit from 2.12.0 to 2.12.1
+
+Bumps [pre-commit](https://github.com/pre-commit/pre-commit) from 2.12.0 to 2.12.1.
+- [Release notes](https://github.com/pre-commit/pre-commit/releases)
+- [Changelog](https://github.com/pre-commit/pre-commit/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/pre-commit/pre-commit/compare/v2.12.0...v2.12.1)
+
+Signed-off-by: dependabot[bot] <support@github.com>"
+ec044a24e10d2bd3c730f69909cd44639b469fd0,2021-04-28 23:40:11+00:00,Grey Li,Add tips for using async on Windows on Python 3.8
+467d2e2a437c73fc8eabdd887efe0453663939c3,2021-05-01 08:02:41+00:00,dependabot[bot],"Bump python-dotenv from 0.17.0 to 0.17.1
+
+Bumps [python-dotenv](https://github.com/theskumar/python-dotenv) from 0.17.0 to 0.17.1.
+- [Release notes](https://github.com/theskumar/python-dotenv/releases)
+- [Changelog](https://github.com/theskumar/python-dotenv/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/theskumar/python-dotenv/compare/v0.17.0...v0.17.1)
+
+Signed-off-by: dependabot[bot] <support@github.com>"
+cb13128cf03b2f1b3c5b48eab518e57e7b5f6516,2021-05-02 19:23:08+00:00,pgjones,"Remove context copying from run_async function
+
+This was required with the previous implementation of Werkzeug's
+locals which didn't persist across threads. However as the current
+implementation uses ContextVars which do persist the context copying
+is no longer required."
+7f87f3dd93baf45d5f69f02a2dcf4493dfc4a1be,2021-05-02 19:49:46+00:00,pgjones,"Simplify the async handling code
+
+Firstly `run_sync` was a misleading name as it didn't run anything,
+instead I think `async_to_sync` is much clearer as it converts a
+coroutine function to a function. (Name stolen from asgiref).
+
+Secondly trying to run the ensure_sync during registration made the
+code more complex and brittle, e.g. the _flask_async_wrapper
+usage. This was done to pay any setup costs during registration rather
+than runtime, however this only saved a iscoroutne check. It allows
+the weirdness of the Blueprint and Scaffold ensure_sync methods to be
+removed.
+
+Switching to runtime ensure_sync usage provides a method for
+extensions to also support async, as now documented."
+8bfce88e39dd427dc1258a04c6b0cafa9667ff3e,2021-05-02 20:05:08+00:00,Joshua Bronson,Minor docs fixes. (#3988)
+2889da67cb15ac6d5d882781d54014286d9ae010,2021-05-03 09:59:28+00:00,pgjones,"Remove the async helper method
+
+It is better to encourage users to utilise the app ensure_sync method
+(or the newely added async_to_sync method) so that any extensions that
+alter these methods take affect throughout the users code.
+
+With the helper method users code fix parts of their code to the
+asgiref async_to_sync ignoring any extension changes."
+e2b7d1056c6c8f6f26a4b9dfcc5dc4b2ef87f573,2021-05-03 14:02:42+00:00,David Lord,release version 2.0.0rc2
+c93a2d76d5874f2cb175b7e91407dc6c877e0139,2021-05-03 17:21:04+00:00,pre-commit-ci[bot],"[pre-commit.ci] pre-commit autoupdate
+
+updates:
+- [github.com/asottile/pyupgrade: v2.13.0 → v2.14.0](https://github.com/asottile/pyupgrade/compare/v2.13.0...v2.14.0)
+- [github.com/psf/black: 21.4b0 → 21.4b2](https://github.com/psf/black/compare/21.4b0...21.4b2)"
+531671c9c5177f24e79a3062e2dc5d0aa60c29af,2021-05-06 01:27:35+00:00,Grey Li,Improve the wording of using FLASK_APP
+95e5843ad51b025098ee33acbf273bafef26a1d8,2021-05-10 20:25:42+00:00,pre-commit-ci[bot],"[pre-commit.ci] pre-commit autoupdate
+
+updates:
+- [github.com/asottile/pyupgrade: v2.14.0 → v2.15.0](https://github.com/asottile/pyupgrade/compare/v2.14.0...v2.15.0)
+- [github.com/psf/black: 21.4b2 → 21.5b1](https://github.com/psf/black/compare/21.4b2...21.5b1)
+- [github.com/PyCQA/flake8: 3.9.1 → 3.9.2](https://github.com/PyCQA/flake8/compare/3.9.1...3.9.2)"
+79ac96f1239601eb12f6f69fcb3ce6cb269ac5fb,2021-05-11 05:45:42+00:00,David Lord,show type hints in description
+8b72f6abd72b32225299c57c981180df35a89547,2021-05-11 13:57:24+00:00,David Lord,update pre-commit monthly
+f8f0caf5c6e560b8e7fd322cbfd140c2bf7aa61b,2021-05-11 21:28:21+00:00,David Lord,update requirements
+3a5532b4ed0db5cfd826e7fd2006ede6e873b028,2021-05-11 21:28:49+00:00,David Lord,update pallets projects minimum versions
+f8e63d39913f9a7bb887066025724569aa3423a6,2021-05-11 21:30:47+00:00,David Lord,release version 2.0.0
